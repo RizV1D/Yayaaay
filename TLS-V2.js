@@ -141,7 +141,7 @@
  
 
 // Daftar negara
-var countries = ["IDN", "MYS", "SGP", "THA", "VNM", "PHL", "USA", "UK", "CAN", "RUS", "JPN", "MMR", "GER", "NDL"];
+var countries = ["Indonesia", "Malaysia", "Singapore", "Thailand", "Vietnam", "Philipina", "United States", "United kingdom", "Canada", "Russia", "Japan", "Myanmar", "German", "Netherlands"];
 
 // Mendapatkan negara secara acak
 var randomCountry = countries[Math.floor(Math.random() * countries.length)];
@@ -164,7 +164,6 @@ let hours = now.getHours();
         cluster.fork();
 
     }
-	console.log(`🟢Attack sent!!🟢`);
         console.log(``);
 	console.log(`Target: ` + args.target );
 	console.log('Port: ' + args.Rate );
