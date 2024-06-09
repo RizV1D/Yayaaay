@@ -251,12 +251,14 @@ showMessage();
   });
 });
 
+
 bot.onText(/\/stop all/, (msg) => {
   const chatId = msg.chat.id;
   const userId = msg.from.id;
 
   if (isAdmin(userId)) {
     bot.sendMessage(chatId, 'bot successfully stopped');
+    process.exit(1);
   } else {
     bot.sendMessage(chatId, 'lu bukan admin kontol dasar suki😹');
   }
@@ -268,4 +270,3 @@ function isAdmin(userId) {
   const adminIds = [6693718590, 987654321];
   return adminIds.includes(userId);
 }
-
